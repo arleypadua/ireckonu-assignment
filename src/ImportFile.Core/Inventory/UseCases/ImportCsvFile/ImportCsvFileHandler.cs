@@ -1,5 +1,4 @@
-﻿using ImportFile.Core.Inventory.AggregateRoot;
-using ImportFile.Core.Inventory.Ports;
+﻿using ImportFile.Core.Inventory.Ports;
 using ImportFile.Core.Inventory.UseCases.ImportCsvLine;
 using ImportFile.SharedKernel.Messaging;
 using MediatR;
@@ -8,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ImportFile.Core.Inventory.InventoryAggregate;
 
 namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
 {

@@ -1,4 +1,4 @@
-﻿namespace ImportFile.Core.Inventory.AggregateRoot
+﻿namespace ImportFile.Core.Inventory.InventoryAggregate
 {
     public class SellingDetails
     {

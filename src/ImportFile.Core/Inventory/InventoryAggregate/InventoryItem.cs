@@ -1,7 +1,7 @@
-﻿using ImportFile.SharedKernel.Domain;
-using System;
+﻿using System;
+using ImportFile.SharedKernel.Domain;
 
-namespace ImportFile.Core.Inventory.AggregateRoot
+namespace ImportFile.Core.Inventory.InventoryAggregate
 {
     public class InventoryItem : Entity, IAggregateRoot
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
-using ImportFile.Core.Inventory.AggregateRoot;
+using ImportFile.Core.Inventory.InventoryAggregate;
 
 namespace ImportFile.Core.Inventory.UseCases
 {
