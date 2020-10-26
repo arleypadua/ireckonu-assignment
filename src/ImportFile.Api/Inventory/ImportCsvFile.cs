@@ -4,6 +4,7 @@ using ImportFile.SharedKernel.Messaging;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using ImportFile.Core.Inventory.UseCases.ImportCsvFile;
 
 namespace ImportFile.Api.Inventory
 {

@@ -1,6 +1,6 @@
 ﻿using ImportFile.SharedKernel.Messaging;
 
-namespace ImportFile.Core.Inventory.UseCases
+namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
 {
     public static class ImportCsvFileUseCase
     {
