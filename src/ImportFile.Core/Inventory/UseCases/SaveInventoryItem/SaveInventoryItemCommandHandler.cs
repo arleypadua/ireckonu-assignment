@@ -1,24 +1,27 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using ImportFile.Core.Inventory.Ports;
 using MediatR;
-using Microsoft.Extensions.Logging;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ImportFile.Core.Inventory.UseCases.SaveInventoryItem
 {
     internal class SaveInventoryItemCommandHandler : IRequestHandler<SaveInventoryItemCommand>
     {
-        private readonly ILogger<SaveInventoryItemCommandHandler> _logger;
+        private readonly IInventoryItemUnitOfWork _uow;
 
-        public SaveInventoryItemCommandHandler(ILogger<SaveInventoryItemCommandHandler> logger)
+        public SaveInventoryItemCommandHandler(IInventoryItemUnitOfWork uow)
         {
-            _logger = logger;
+            _uow = uow;
         }
 
-        public Task<Unit> Handle(SaveInventoryItemCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(SaveInventoryItemCommand request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"processing {request.Item.ArtikelCode}");
+            await _uow.CreateOrUpdate(request.Item, existing =>
+            {
+                existing.MergeWith(request.Item);
+            });
 
-            return Unit.Task;
+            return Unit.Value;
         }
     }
 }

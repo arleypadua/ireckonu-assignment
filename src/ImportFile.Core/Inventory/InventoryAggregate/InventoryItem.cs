@@ -1,5 +1,5 @@
-﻿using System;
-using ImportFile.SharedKernel.Domain;
+﻿using ImportFile.SharedKernel.Domain;
+using System;
 
 namespace ImportFile.Core.Inventory.InventoryAggregate
 {
@@ -38,5 +38,17 @@ namespace ImportFile.Core.Inventory.InventoryAggregate
         public string Audience { get; private set; }
         public string Size { get; private set; }
         public Color Color { get; private set; }
+
+        public void MergeWith(InventoryItem inventoryItem)
+        {
+            Key = inventoryItem.Key;
+            ArtikelCode = inventoryItem.ArtikelCode;
+            SellingDetails = inventoryItem.SellingDetails ?? SellingDetails;
+            Description = inventoryItem.Description;
+            DeliveredIn = inventoryItem.DeliveredIn;
+            Audience = inventoryItem.Audience;
+            Size = inventoryItem.Size;
+            Color = inventoryItem.Color ?? Color;
+        }
     }
 }

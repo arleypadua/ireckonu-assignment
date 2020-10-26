@@ -1,7 +1,7 @@
 ﻿using ImportFile.Core.Inventory.Ports;
-using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ImportFile.Adapters
@@ -26,7 +26,7 @@ namespace ImportFile.Adapters
 
         public Task WriteSerialized(object obj, StreamWriter stream)
         {
-            return stream.WriteAsync(JsonConvert.SerializeObject(obj));
+            return stream.WriteAsync(JsonSerializer.Serialize(obj));
         }
 
         public Task WriteArrayEndToken(StreamWriter stream)

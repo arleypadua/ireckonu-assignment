@@ -33,6 +33,9 @@ namespace ImportFile.Api
             services.AddSingleton<IDownloadFiles, HttpClientFileDownloader>();
             services.AddSingleton<IWriteJsonIntoStreams, JsonIntoStreamWriter>();
             services.AddScoped<ISendMessages, MediatrMessageSender>();
+            services.AddScoped<IInventoryItemUnitOfWork, InventoryItemMongoDbUnitOfWork>();
+
+            services.ConfigureMongoDb(Configuration.GetConnectionString("MongoDb"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
