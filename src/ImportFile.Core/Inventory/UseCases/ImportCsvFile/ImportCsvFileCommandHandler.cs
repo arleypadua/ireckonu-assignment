@@ -32,11 +32,11 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
         public async Task<Unit> Handle(ImportCsvFileCommand message, 
             CancellationToken cancellationToken)
         {
-            using var inventoryFileStream = await _fileDownloader.Download(message.FileUrl);
-            using var inventoryStreamReader = new StreamReader(inventoryFileStream);
+            using Stream inventoryFileStream = await _fileDownloader.Download(message.FileUrl);
+            using StreamReader inventoryStreamReader = new StreamReader(inventoryFileStream);
 
             // todo: instead of storing the file locally, we could generate a stream in memory and upload it to Azure Blob Storage
-            using var localFileWriter = new StreamWriter(Path.Combine(
+            using StreamWriter localFileWriter = new StreamWriter(Path.Combine(
                 Environment.CurrentDirectory, $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Guid.NewGuid()}.json"));
 
             await _jsonStreamWriter.WriteArrayStartToken(localFileWriter);

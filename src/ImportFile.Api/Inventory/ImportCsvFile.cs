@@ -26,7 +26,7 @@ namespace ImportFile.Api.Inventory
             // using an interface that abstracts the sending of a command in a queue.
             // the implementation provided here, relies on MediatR to implement this functionality without the need of using queues.
             // in practice this will complete synchronously, but the intention would be to put a command in a queue and respond: Accepted
-            await _messageSender.SendCommand(new ImportCsvFileCommand.Arguments
+            await _messageSender.SendCommand(new ImportCsvFileCommand
             {
                 FileUrl = input.FileUrl,
                 ContainsHeader = input.ContainsHeader

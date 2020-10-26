@@ -1,4 +1,9 @@
 using ImportFile.Adapters;
+using ImportFile.Core;
+using ImportFile.Core.Inventory.Ports;
+using ImportFile.SharedKernel.Messaging;
+using ImportFile.SharedKernel.Messaging.Mediatr;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +25,14 @@ namespace ImportFile.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
             services.AddHttpClient(HttpClientFileDownloader.ClientName);
+
+            services.AddMediatR(typeof(AssemblyMarker).Assembly);
+
+            services.AddSingleton<IDownloadFiles, HttpClientFileDownloader>();
+            services.AddSingleton<IWriteJsonIntoStreams, JsonIntoStreamWriter>();
+            services.AddScoped<ISendMessages, MediatrMessageSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
