@@ -1,5 +1,4 @@
 ﻿using ImportFile.Core.Inventory.Ports;
-using ImportFile.Core.Inventory.UseCases.ImportCsvLine;
 using ImportFile.SharedKernel.Messaging;
 using MediatR;
 using System;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ImportFile.Core.Inventory.InventoryAggregate;
+using ImportFile.Core.Inventory.UseCases.SaveInventoryItem;
 
 namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
 {
@@ -78,7 +78,7 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
         private Task SendSaveInventoryItemCommand(InventoryItem item)
         {
             // this would send a message in a queue, and storing the inventory item in the database happens eventually in a different moment.
-            return _messageSender.SendCommand(new SaveInventoryItemCommand.Arguments {Item = item});
+            return _messageSender.SendCommand(new SaveInventoryItemCommand {Item = item});
         }
 
         private Task WriteInventoryItemAsJsonIntoStream(StreamWriter stream, InventoryItem item)

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 
-namespace ImportFile.Core.Inventory.UseCases.ImportCsvLine
+namespace ImportFile.Core.Inventory.UseCases.SaveInventoryItem
 {
     internal class SaveInventoryItemCommandHandler : IRequestHandler<SaveInventoryItemCommand>
     {
