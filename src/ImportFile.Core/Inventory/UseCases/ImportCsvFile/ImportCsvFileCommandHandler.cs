@@ -27,8 +27,8 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
             _jsonStreamWriter = jsonStreamWriter;
         }
         
-        // this handler is optimized to read big files and generate the json file as we read through the csv file.
-        // another option would also separate these two processes by only parsing the file here, and asynchronously, each inventory item would create its own json file
+        // this handler is optimized to read big csv files and generate the json file as we read through the csv file.
+        // another option would be to also separate these two processes by only parsing the file here, and asynchronously, each inventory item would create its own json file
         public async Task<Unit> Handle(ImportCsvFileCommand message, 
             CancellationToken cancellationToken)
         {
@@ -71,7 +71,7 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
             }
 
             await _jsonStreamWriter.WriteArrayEndToken(localFileWriter);
-            
+
             return Unit.Value;
         }
 

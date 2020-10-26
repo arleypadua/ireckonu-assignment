@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ImportFile.Adapters\ImportFile.Adapters.csproj" />
     <ProjectReference Include="..\ImportFile.Core\ImportFile.Core.csproj" />
   </ItemGroup>
 
