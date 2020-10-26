@@ -24,7 +24,7 @@ namespace ImportFile.Tests
                 FileUrl = "http://whatever.io"
             }, CancellationToken.None);
 
-            messageSender.CommandsSent.Should().HaveCountGreaterThan(0);
+            messageSender.CommandsSent.Should().HaveCount(8);
             fileDownloader.FileDownloaded.Should().BeTrue();
         }
     }
