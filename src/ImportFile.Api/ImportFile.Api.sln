@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.Api", "ImportFile.Api.csproj", "{65F01DA3-48BD-4011-8022-F6A1FFA052F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.Core", "..\ImportFile.Core\ImportFile.Core.csproj", "{604EEC29-4589-4198-ADE4-8C7A9D4F5756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.SharedKernel", "..\ImportFile.SharedKernel\ImportFile.SharedKernel.csproj", "{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{65F01DA3-48BD-4011-8022-F6A1FFA052F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65F01DA3-48BD-4011-8022-F6A1FFA052F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65F01DA3-48BD-4011-8022-F6A1FFA052F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{604EEC29-4589-4198-ADE4-8C7A9D4F5756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604EEC29-4589-4198-ADE4-8C7A9D4F5756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604EEC29-4589-4198-ADE4-8C7A9D4F5756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604EEC29-4589-4198-ADE4-8C7A9D4F5756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
