@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using MediatR;
 
 namespace ImportFile.SharedKernel.Messaging
 {
     public interface ISendMessages
     {
-        Task SendCommand();
+        Task SendCommand(IRequest command);
     }
 }
