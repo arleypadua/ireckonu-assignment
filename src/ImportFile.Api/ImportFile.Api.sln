@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.Core", "..\Impor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.SharedKernel", "..\ImportFile.SharedKernel\ImportFile.SharedKernel.csproj", "{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.Tests", "..\ImportFile.Tests\ImportFile.Tests.csproj", "{99B91AB5-3E52-4353-9EE9-AFD7DA55F786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportFile.Adapters", "..\ImportFile.Adapters\ImportFile.Adapters.csproj", "{CEE811C4-0B9A-4FE0-8B67-9294573EA683}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE30C622-FBD6-45E0-A7C1-A5CB397DA851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B91AB5-3E52-4353-9EE9-AFD7DA55F786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B91AB5-3E52-4353-9EE9-AFD7DA55F786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B91AB5-3E52-4353-9EE9-AFD7DA55F786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B91AB5-3E52-4353-9EE9-AFD7DA55F786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE811C4-0B9A-4FE0-8B67-9294573EA683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE811C4-0B9A-4FE0-8B67-9294573EA683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE811C4-0B9A-4FE0-8B67-9294573EA683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE811C4-0B9A-4FE0-8B67-9294573EA683}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

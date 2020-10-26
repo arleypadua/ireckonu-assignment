@@ -6,26 +6,25 @@ namespace ImportFile.Core.Inventory.UseCases
 {
     internal static class InventoryItemFactory
     {
-        public static InventoryItem FromCsvLine(string csvLine, string fileId)
+        public static InventoryItem FromCsvLine(string[] lineData, string fileId)
         {
-            string[] data = csvLine.Split(',');
-            if(data.Length < 10)
+            if(lineData.Length < 10)
                 throw new InvalidEnumArgumentException("Invalid amount of columns");
 
             return new InventoryItem(
                 fileId,
-                data[DataPositions.Key],
-                data[DataPositions.ArtikelCode],
+                lineData[DataPositions.Key],
+                lineData[DataPositions.ArtikelCode],
                 new SellingDetails(
-                    decimal.Parse(data[DataPositions.Price], CultureInfo.InvariantCulture),
-                    decimal.Parse(data[DataPositions.DiscountPrice], CultureInfo.InvariantCulture)), 
-                data[DataPositions.Description],
-                data[DataPositions.DeliveredIn],
-                data[DataPositions.Q1],
-                data[DataPositions.Size],
+                    decimal.Parse(lineData[DataPositions.Price], CultureInfo.InvariantCulture),
+                    decimal.Parse(lineData[DataPositions.DiscountPrice], CultureInfo.InvariantCulture)), 
+                lineData[DataPositions.Description],
+                lineData[DataPositions.DeliveredIn],
+                lineData[DataPositions.Q1],
+                lineData[DataPositions.Size],
                 new Color(
-                    data[DataPositions.ColorCode],
-                    data[DataPositions.Color]));
+                    lineData[DataPositions.ColorCode],
+                    lineData[DataPositions.Color]));
         }
 
         private static class DataPositions
