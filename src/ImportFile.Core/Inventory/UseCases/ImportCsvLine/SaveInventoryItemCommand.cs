@@ -3,11 +3,8 @@ using ImportFile.SharedKernel.Messaging;
 
 namespace ImportFile.Core.Inventory.UseCases.ImportCsvLine
 {
-    internal static class ImportCsvLineUseCase
+    internal class SaveInventoryItemCommand : ICommand
     {
-        public class Arguments : ICommand
-        {
-            public InventoryItem Item { get; set; }
-        }
+        public InventoryItem Item { get; set; }
     }
 }

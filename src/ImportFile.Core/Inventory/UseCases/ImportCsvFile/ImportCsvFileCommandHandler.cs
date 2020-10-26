@@ -11,13 +11,13 @@ using ImportFile.Core.Inventory.InventoryAggregate;
 
 namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
 {
-    internal class ImportCsvFileHandler : IRequestHandler<ImportCsvFileUseCase.Arguments>
+    internal class ImportCsvFileCommandHandler : IRequestHandler<ImportCsvFileCommand>
     {
         private readonly ISendMessages _messageSender;
         private readonly IDownloadFiles _fileDownloader;
         private readonly IWriteJsonIntoStreams _jsonStreamWriter;
 
-        public ImportCsvFileHandler(
+        public ImportCsvFileCommandHandler(
             ISendMessages messageSender,
             IDownloadFiles fileDownloader,
             IWriteJsonIntoStreams jsonStreamWriter)
@@ -29,10 +29,10 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
         
         // this handler is optimized to read big files and generate the json file as we read through the csv file.
         // another option would also separate these two processes by only parsing the file here, and asynchronously, each inventory item would create its own json file
-        public async Task<Unit> Handle(ImportCsvFileUseCase.Arguments request, 
+        public async Task<Unit> Handle(ImportCsvFileCommand message, 
             CancellationToken cancellationToken)
         {
-            using var inventoryFileStream = await _fileDownloader.Download(request.FileUrl);
+            using var inventoryFileStream = await _fileDownloader.Download(message.FileUrl);
             using var inventoryStreamReader = new StreamReader(inventoryFileStream);
 
             // todo: instead of storing the file locally, we could generate a stream in memory and upload it to Azure Blob Storage
@@ -41,7 +41,7 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
 
             await _jsonStreamWriter.WriteArrayStartToken(localFileWriter);
 
-            if (request.ContainsHeader)
+            if (message.ContainsHeader)
             {
                 await inventoryStreamReader.ReadLineAsync();
             }
@@ -60,7 +60,7 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
                     continue;
                 }
 
-                InventoryItem item = InventoryItemFactory.FromCsvLine(lineData, request.FileUrl);
+                InventoryItem item = InventoryItemFactory.FromCsvLine(lineData, message.FileUrl);
 
                 await Task.WhenAll(
                     SendSaveInventoryItemCommand(item),
@@ -78,7 +78,7 @@ namespace ImportFile.Core.Inventory.UseCases.ImportCsvFile
         private Task SendSaveInventoryItemCommand(InventoryItem item)
         {
             // this would send a message in a queue, and storing the inventory item in the database happens eventually in a different moment.
-            return _messageSender.SendCommand(new ImportCsvLineUseCase.Arguments {Item = item});
+            return _messageSender.SendCommand(new SaveInventoryItemCommand.Arguments {Item = item});
         }
 
         private Task WriteInventoryItemAsJsonIntoStream(StreamWriter stream, InventoryItem item)

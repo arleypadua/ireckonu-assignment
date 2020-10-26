@@ -17,8 +17,8 @@ namespace ImportFile.Tests
             var fileDownloader = new NaiveFileDownloader();
             var jsonWriter = new JsonIntoStreamWriter();
 
-            var handler = new ImportCsvFileHandler(messageSender, fileDownloader, jsonWriter);
-            await handler.Handle(new ImportCsvFileUseCase.Arguments
+            var handler = new ImportCsvFileCommandHandler(messageSender, fileDownloader, jsonWriter);
+            await handler.Handle(new ImportCsvFileCommand.Arguments
             {
                 ContainsHeader = true,
                 FileUrl = "http://whatever.io"
