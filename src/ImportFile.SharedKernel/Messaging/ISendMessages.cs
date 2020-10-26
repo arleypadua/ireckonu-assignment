@@ -5,6 +5,7 @@ namespace ImportFile.SharedKernel.Messaging
 {
     public interface ISendMessages
     {
-        Task SendCommand(IRequest command);
+        Task SendCommand(ICommand command);
+        Task PublishEvent(IDomainEvent command);
     }
 }
